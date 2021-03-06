@@ -1,0 +1,47 @@
+{% extends "first_app/base.html" %}
+{% load static %}
+{% block body_block %}
+
+  <div class="container" id="spc">
+      <form method="POST">
+        {% csrf_token %}
+        <table class="table">
+          <tr>
+            <td><input name="search" type="text" class="form-control" placeholder="search"></td>
+            <td><button type="submit" class="btn btn-default">search</button></td>
+          </tr>
+        </table>
+        <br><br><br>
+      </form>
+
+      {% if movies %}
+      <div class="row">
+        {% for i in movies %}
+        <div class="col-lg-4 col-md-4 col-xs-6">
+          <div class="thumbnail">
+            <img src={% static i.movie_photo %} alt="no img">
+            <div class="caption">
+              <h3>{{i.movie_name}}</h3>
+              <br>
+              <p><a href="/first_app/watch_movie/{{i.movie_video}}" class="btn btn-primary btn-lg" role="button">watch</a></p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    </div>
+
+    <style>
+      .thumbnail{
+        width: 350px;
+        height: 700px;
+      }
+      .form-control{
+        width:100%;
+      }
+      .table td{
+        width:90%;
+      }
+    </style>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "first_app/base.html" %}
+{% load static %}
+{% block body_block %}
+    <div class="container" id="spc">
+
+    <div class="thumbnail">
+      <img src="{{pic}}">
+      <div class="caption">
+        <h3>{{user.username}}</h3>
+        <h4>{{user.email}}</h4>
+        <h4>{{user.user_id}}</h4>
+        <br><br><br><br><br><br><br>
+        <a id="bbtn" href="{% url 'login_website:user_logout' %}" class="btn btn-primary" role="button">Sign out</a>
+      </div>
+    </div>
+
+    </div>
+
+    <style>
+      .thumbnail{
+        width: 450px;
+        height: 720px;
+        margin : auto;
+      }
+      #bbtn{
+        width: 420px;
+      }
+      h3,h4{
+        text-align:center;
+      }
+    </style>
+{% endblock %}
