@@ -15,7 +15,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import authenticate,login,logout
 from login_website.models import UserProfileInfo
-from first_app.forms import movie_form
+from first_app.forms import movie_form,gnre
+from first_app.models import Genre,movies
 
 @login_required(login_url='/login_website/user_login')
 def watch_movie(request):
@@ -45,17 +46,46 @@ def display_user_details(request):
     print(user_details.profile_pic.url)
     return render(request,'first_app/user_detail.html',{'user':request.user,'pic':user_details.profile_pic.url})
 
+def remove_html(x):
+    x=str(x)
+    x=x.split("</option>")
+    x=''.join(x)
+    x=x.split("<option value=")
+    x=''.join(x)
+    x=x.split("\n\n")
+    x1=[]
+    for i in x:
+        if("selected" in i):
+            x1.append(i.split("selected>")[0])
+    print(x1)
+    x1=''.join(x1)
+    x1=x1.split(' ')
+    x1=''.join(x1)
+    x1=x1.split('"')
+    print(x1)
+    x2=[]
+    num=[str(i) for i in range(0,100)]
+    for i in x1:
+        if(i in num):
+            x2.append(int(i))
+    print(x2)
+    return x2
+
 @login_required(login_url='/login_website/user_login')
 def search_movies(request):
     user_details=request.user
+    genre_mov=gnre()
+
     if request.method == "POST":
         search_value = request.POST.get('search')
-        print(search_value)
-        mvs=movies.objects.filter(movie_name__contains=search_value)
-        dct={'movies':mvs,'user':user_details}
+        genre_mov=gnre(request.POST)
+
+        x1=remove_html(genre_mov['genre'])
+        mvs=movies.objects.filter(movie_name__contains=search_value,genre__in=x1)
+        dct={'genre':genre_mov,'movies':mvs,'user':user_details}
         return render(request,'first_app/search_stuff.html',dct)
     else:
-        dct={'user':user_details}
+        dct={'genre':genre_mov,'user':user_details}
         return render(request,'first_app/search_stuff.html',dct)
 
 @login_required(login_url='/login_website/user_login')
@@ -97,6 +127,10 @@ def upload_movie(request):
             movie.movie_photo=movie.movie_photo_actual.url.split('/media/')[1]
             movie.movie_video=movie.movie_video_actual.url.split('/media/')[1]
             movie.save()
+            x1=remove_html(mv['genre'])
+            for i in x1:
+                movie.genre.add(Genre.objects.get(genre_id=i))
+
             registered = True
 
         else:
