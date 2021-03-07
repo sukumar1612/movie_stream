@@ -1,6 +1,6 @@
 #!/bin/bash
 
-python manage.py runserver 0.0.0.0:80 &
+python manage.py runserver 0.0.0.0:5000 &
 pr1=$!
 npm start 0.0.0.0:8000 &
 pr2=$!

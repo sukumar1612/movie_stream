@@ -18,8 +18,8 @@ app.get("/*.mp4", function (req, res) {
   }
 
   // get video stats (about 61MB)
-  const videoPath = "static/"+x.slice(1);
-  const videoSize = fs.statSync("static/"+x.slice(1)).size;
+  const videoPath = "media/"+x.slice(1);
+  const videoSize = fs.statSync("media/"+x.slice(1)).size;
 
   // Parse Range
   // Example: "bytes=32324-"

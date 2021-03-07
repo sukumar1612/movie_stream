@@ -15,6 +15,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import authenticate,login,logout
 from login_website.models import UserProfileInfo
+from first_app.forms import movie_form
 
 @login_required(login_url='/login_website/user_login')
 def watch_movie(request):
@@ -56,4 +57,55 @@ def search_movies(request):
     else:
         dct={'user':user_details}
         return render(request,'first_app/search_stuff.html',dct)
+
+@login_required(login_url='/login_website/user_login')
+def fav(request):
+    user_details=request.user
+    if request.method == "POST":
+        mvname=request.POST.get('mvname')
+        mvs=movies.objects.get(movie_name=mvname)
+        mvs.user.add(user_details)
+        mvs.save()
+    mvs=movies.objects.filter(user=user_details)
+    dct={'movies':mvs,'user':user_details}
+    return render(request,'first_app/favourite.html',dct)
+
+@login_required(login_url='/login_website/user_login')
+def unfav(request):
+    user_details=request.user
+    if request.method == "POST":
+        mvname=request.POST.get('mvname')
+        mvs=movies.objects.get(movie_name=mvname)
+        mvs.user.remove(user_details)
+        mvs.save()
+    mvs=movies.objects.filter(user=user_details)
+    dct={'movies':mvs,'user':user_details}
+    return render(request,'first_app/favourite.html',dct)
+
+@login_required(login_url='/login_website/user_login')
+def upload_movie(request):
+    registered = False
+    user_details=request.user
+    if request.method == "POST":
+        mv = movie_form(request.POST, request.FILES)
+
+        if mv.is_valid():
+            movie = mv.save(commit=False)
+            movie.movie_photo_actual=request.FILES['movie_photo_actual']
+            movie.movie_video_actual=request.FILES['movie_video_actual']
+            print(movie.movie_video_actual.url.split('/media/')[1])
+            movie.movie_photo=movie.movie_photo_actual.url.split('/media/')[1]
+            movie.movie_video=movie.movie_video_actual.url.split('/media/')[1]
+            movie.save()
+            registered = True
+
+        else:
+            print(mv.errors)
+    else:
+        mv = movie_form()
+
+    dct={'registered':registered,'movies':mv,'user':user_details}
+    return render(request,'first_app/upload_movie.html',dct)
+
+
 # Create your views here.

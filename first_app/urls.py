@@ -7,6 +7,9 @@ app_name = 'first_app'
 
 urlpatterns=[
     path('',views.display_movie,name='display_movie'),
+    path('fav/',views.fav,name='fav'),
+    path('unfav/',views.unfav,name='unfav'),
+    path('upload_movie/',views.upload_movie,name='upload_movie'),
     path('search_movies/',views.search_movies,name='search_movies'),
     path('display_user_details/',views.display_user_details,name='display_user_details'),
     re_path(r'^watch_movie/*',views.watch_movie,name='watch_movie'),

@@ -66,7 +66,8 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li id="siz"><a href="{% url 'first_app:display_movie' %}">Home</a></li>
-          <li id="siz"><a href="#">Favourites</a></li>
+          <li id="siz"><a href="{% url 'first_app:upload_movie' %}">Upload</a></li>
+          <li id="siz"><a href="{% url 'first_app:fav' %}">Favourites</a></li>
           <li id="siz"><a href="{% url 'first_app:search_movies' %}">search</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right navbar-inverse">

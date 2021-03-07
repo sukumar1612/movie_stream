@@ -19,11 +19,21 @@
         {% for i in movies %}
         <div class="col-lg-4 col-md-4 col-xs-6">
           <div class="thumbnail">
-            <img src={% static i.movie_photo %} alt="no img">
+            <img src="/media/{{i.movie_photo}}" alt="no img">
             <div class="caption">
               <h3>{{i.movie_name}}</h3>
               <br>
-              <p><a href="/first_app/watch_movie/{{i.movie_video}}" class="btn btn-primary btn-lg" role="button">watch</a></p>
+              <table>
+                <tr>
+                  <td><a href="/first_app/watch_movie/{{i.movie_video}}" class="btn btn-primary btn-lg" role="button">watch</a></td>
+                  <td><p id="ssppc">---------------</p></td>
+                  <td><form class="" action="{% url 'first_app:fav' %}" method="POST">
+                    {% csrf_token %}
+                    <input name="mvname" type="hidden" class="form-control" value="{{i.movie_name}}">
+                    <button type="submit" class="btn btn-primary btn-lg">Favourite</button>
+                  </form></td>
+                </tr>
+              </table>
             </div>
           </div>
         </div>
@@ -42,6 +52,9 @@
       }
       .table td{
         width:90%;
+      }
+      #ssppc{
+        color:white;
       }
     </style>
 {% endblock %}
