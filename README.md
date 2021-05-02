@@ -2,15 +2,20 @@
 
 In this platform you can upload movies, search them in the search bar(allows for advanced search functions like search with genre) 
 and it also streams the movie onto your device.
+
 You can also store your profile info as well as keep a list of favourite movies.
+
 The website only allows you in if you enter the correct login details.
+
 It uses Django to manage the webpages and node js to stream the videos.
-It uses SQLite to store all the information.
-The database is designed using an ER diagram
+
+It uses SQLite to store all the information and database is designed using an ER diagram
 
 It is the perfect platform for storing and streaming all your media content.
+
 The uploaded movies are accessible by all members in the website.
-More updates to this project will be coming soon where ill add the ability to recommend movies based 
+
+More updates to this project will be coming soon where i'll add the ability to recommend movies based 
 on your watch history and also keep private and public list of videos.
 
 This platform is built to sevice home needs and would be suitable to run on a raspberry pi (i have tested it with a raspberry pi 2b).
