@@ -18,29 +18,53 @@ This platform is built to sevice home needs and would be suitable to run on a ra
 ### Install packages for project 
 
 argon2-cffi     20.1.0
+
 asgiref         3.3.1
+
 bcrypt          3.2.0
+
 certifi         2020.12.5
+
 cffi            1.14.5
+
 chardet         4.0.0
+
 Django          3.1.7
+
 django-oembed   0.1.3
+
 django-tagging  0.5.0
+
 Faker           6.5.0
+
 idna            2.10
+
 Pillow          8.1.1
+
 pip             21.0.1
+
 psycopg2        2.8.6
+
 pycparser       2.20
+
 python-dateutil 2.8.1
+
 pytz            2021.1
+
 requests        2.25.1
+
 setuptools      52.0.0.post20210125
+
 six             1.15.0
+
 sockets         1.0.0
+
 sqlparse        0.4.1
+
 text-unidecode  1.3
+
 urllib3         1.26.3
+
 wheel           0.36.2
 
 npm,nodejs
