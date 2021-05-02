@@ -78,6 +78,9 @@ npm,nodejs
 ### Further work needs to be done on
 
 -> improve the look of the UI
+
 -> add watch history and the abilty to erase it
+
 -> add recommended movie list
+
 -> add private video list 
