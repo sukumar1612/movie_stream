@@ -6,6 +6,7 @@ You can also store your profile info as well as keep a list of favourite movies.
 The website only allows you in if you enter the correct login details.
 It uses Django to manage the webpages and node js to stream the videos.
 It uses SQLite to store all the information.
+The database is designed using an ER diagram
 
 It is the perfect platform for storing and streaming all your media content.
 The uploaded movies are accessible by all members in the website.
