@@ -90,3 +90,8 @@ npm,nodejs
 -> add recommended movie list
 
 -> add private video list 
+
+###screenshots for the server
+
+![Rel Schema](https://github.com/sukumar1612/movie_stream/blob/main/prj1.PNG)
+
