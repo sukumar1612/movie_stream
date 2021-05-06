@@ -91,7 +91,7 @@ npm,nodejs
 
 -> add private video list 
 
-###screenshots for the server
+### screenshots for the server
 
 ### front page or Home page
 ![Rel Schema](https://github.com/sukumar1612/movie_stream/blob/master/prj1.PNG)
