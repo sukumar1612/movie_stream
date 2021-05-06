@@ -93,5 +93,18 @@ npm,nodejs
 
 ###screenshots for the server
 
+### front page or Home page
 ![Rel Schema](https://github.com/sukumar1612/movie_stream/blob/master/prj1.PNG)
 
+
+### add movies page
+![Rel Schema](https://github.com/sukumar1612/movie_stream/blob/master/prj2.PNG)
+
+### favourites page
+![Rel Schema](https://github.com/sukumar1612/movie_stream/blob/master/prj3.PNG)
+
+### search page
+![Rel Schema](https://github.com/sukumar1612/movie_stream/blob/master/prj4.PNG)
+
+### user profile page
+![Rel Schema](https://github.com/sukumar1612/movie_stream/blob/master/prj5.PNG)
