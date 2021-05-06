@@ -93,5 +93,5 @@ npm,nodejs
 
 ###screenshots for the server
 
-![Rel Schema](https://github.com/sukumar1612/movie_stream/blob/main/prj1.PNG)
+![Rel Schema](https://github.com/sukumar1612/movie_stream/blob/master/prj1.PNG)
 
